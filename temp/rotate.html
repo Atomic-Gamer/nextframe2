@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Progress Effect Spin</title>
+  <style>
+    body {
+      background: #111;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .gear {
+      width: 160px;
+      height: 160px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Paste your SVG code here instead of <img>. 
+       Open Progresseffect.svg in a code editor, copy everything from <svg>...</svg> 
+       and drop it inside this spot. -->
+  <svg id="gear" class="gear" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+    <!-- Replace this <circle> with the actual contents of Progresseffect.svg -->
+    <svg width="443" height="443" viewBox="0 0 443 443" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g opacity="0.1">
+<rect width="39.0308" height="136.608" rx="19.5154" transform="matrix(-1 0 0 1 241.015 0)" fill="#ADADAD" fill-opacity="0.6"/>
+<rect width="39.0308" height="136.608" rx="19.5154" transform="matrix(-0.707107 -0.707107 -0.707107 0.707107 391.924 78.6753)" fill="#ADADAD" fill-opacity="0.4"/>
+<rect width="39.0308" height="136.608" rx="19.5154" transform="matrix(-0.707107 0.707107 0.707107 0.707107 78.6753 51.0757)" fill="#ADADAD" fill-opacity="0.8"/>
+<rect width="39.0308" height="136.608" rx="19.5154" transform="matrix(4.37114e-08 1 1 -4.37114e-08 0 201.984)" fill="#ADADAD"/>
+<rect width="39.0308" height="136.608" rx="19.5154" transform="matrix(-0.707107 -0.707107 -0.707107 0.707107 175.271 295.327)" fill="#ADADAD"/>
+<rect width="39.0308" height="136.608" rx="19.5154" transform="matrix(-0.707107 0.707107 0.707107 0.707107 295.327 267.729)" fill="#ADADAD" fill-opacity="0.1"/>
+<rect width="39.0308" height="136.608" rx="19.5154" transform="matrix(4.37114e-08 1 1 -4.37114e-08 306.392 201.984)" fill="#ADADAD" fill-opacity="0.2"/>
+</g>
+</svg>
+    <defs>
+      <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" style="stop-color:#f00;stop-opacity:1" />
+        <stop offset="100%" style="stop-color:#00f;stop-opacity:1" />
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <script>
+    const gear = document.getElementById('gear');
+    let angle = 0;
+
+    function stepSpin() {
+      angle -= 90; // rotate anticlockwise one step
+      gear.style.transition = 'transform 0.6s linear'; // smooth step
+      gear.style.transform = `rotate(${angle}deg)`;
+
+      // stop transition during pause
+      setTimeout(() => {
+        gear.style.transition = 'none';
+      }, 600);
+
+      // repeat every 2s (0.6s spin + 1.4s pause)
+      setTimeout(stepSpin, 2000);
+    }
+
+    stepSpin();
+  </script>
+</body>
+</html>

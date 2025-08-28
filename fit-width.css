@@ -1,0 +1,51 @@
+/* =========================================================
+   Full-Bleed Fit-Width Scaler (with scale-aware anchors)
+   ========================================================= */
+:root{
+  --design-w: 1920; /* base canvas width in px */
+  --scale: 1;
+  --page-bg: #0b0b0b;
+}
+
+html{
+  /* native smooth scroll for manual wheel/keyboard; JS handles anchor jumps */
+  scroll-behavior: smooth;
+}
+
+html, body{
+  margin: 0;
+  width: 100%;
+  min-width: 320px;
+  overflow-x: hidden;
+  background: var(--page-bg);
+}
+
+.fit-wrapper{
+  /* match the layout viewport width (excludes scrollbar) */
+  width: 100%;
+  margin: 0;
+  position: relative;
+  isolation: isolate;
+}
+
+/* Lock the unscaled canvas width to the comp, then scale it */
+.nextframe{
+  width: calc(var(--design-w) * 1px) !important; /* override any 100% rules */
+  margin: 0;
+  transform: scale(var(--scale)) translateZ(0);
+  transform-origin: top left; /* hug the left edge, no gutter */
+  backface-visibility: hidden;
+  will-change: transform;
+}
+
+/* (Optional) small view tweaks you can remove if undesired */
+@media (max-width: 640px){
+  .button{ transform: translateY(-0.25rem); }
+  .cta-2{  transform: translateY(-0.25rem); }
+}
+
+/* Keyboard focus safety */
+:where(.projects,.button,.button-nav):focus-visible{
+  outline: 2px dashed #555;
+  outline-offset: 3px;
+}
