@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Full-screen stacked sections</title>
+<style>
+  :root{
+    /* If you have a fixed header, set this (e.g., 64px) and see .page calc() below */
+    --header-h: 0px;
+  }
+
+  html, body{
+    height: 100%;
+    margin: 0;
+  }
+
+  /* One scroll container for the whole page */
+  body{
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    /* Snap vertically, one section per viewport */
+    scroll-snap-type: y mandatory;   /* change to `proximity` for softer snap */
+  }
+
+  /* Each full-screen “page” */
+  .page{
+    /* Fallback for old browsers */
+    min-height: 100vh;
+    /* Modern dynamic viewport height (handles mobile browser bars) */
+    min-height: calc(100dvh - var(--header-h));
+    /* Extra fallback for iOS/old Android via JS var --vh set below */
+    min-height: calc((var(--vh, 1vh) * 100) - var(--header-h));
+
+    width: 100%;
+    position: relative;              /* contains any absolutely-positioned children */
+    display: grid;                   /* easy centering */
+    place-items: center;
+    scroll-snap-align: start;        /* snap to start of each section */
+    scroll-snap-stop: always;        /* ensures each section stops when scrolling fast */
+  }
+
+  /* Just demo styling */
+  .page h1{
+    font: 700 clamp(24px, 4vw, 48px)/1.1 system-ui, sans-serif;
+    margin: 0;
+    text-align: center;
+    color: white;
+  }
+  .page--a{ background: #111; }
+  .page--b{ background: #222; }
+  .page--c{ background: #333; }
+
+  /* If inner content might be taller than the viewport, let it scroll inside the page */
+  .page__content{
+    max-height: 100%;
+    overflow: auto;
+    padding: 24px;
+    box-sizing: border-box;
+  }
+</style>
+</head>
+<body>
+
+  <!-- Example sections -->
+  <section class="page page--a">
+    <div class="page__content">
+      <h1>Page 1</h1>
+      <p style="color:#bbb">This section is exactly one screen tall.</p>
+    </div>
+  </section>
+
+  <section class="page page--b">
+    <div class="page__content">
+      <h1>Page 2</h1>
+      <p style="color:#bbb">Resize the window or try on mobile—still fits.</p>
+    </div>
+  </section>
+
+  <section class="page page--c">
+    <div class="page__content">
+      <h1>Page 3</h1>
+      <p style="color:#bbb">Scroll snaps to each “page”.</p>
+    </div>
+  </section>
+
+<script>
+  /* Mobile/old-browser fallback for 100vh bugs */
+  const setVh = () => {
+    const vh = window.innerHeight * 0.01;            // visual viewport height
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  };
+  setVh();
+  window.addEventListener('resize', setVh);
+
+  /* If you have a fixed header, measure it once and subtract from each section */
+  // const header = document.querySelector('.site-header');
+  // if (header) {
+  //   document.documentElement.style.setProperty('--header-h', `${header.offsetHeight}px`);
+  // }
+</script>
+</body>
+</html>

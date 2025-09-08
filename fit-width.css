@@ -49,3 +49,5 @@ html, body{
   outline: 2px dashed #555;
   outline-offset: 3px;
 }
+
+.hero,.about{ min-height: calc(100dvh / var(--scale)); }

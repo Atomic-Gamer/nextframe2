@@ -126,3 +126,12 @@
     });
   });
 })();
+
+
+function setHeights(){
+  const about = document.getElementById('about');
+  // offsetHeight gives the **unscaled** layout height (what we want)
+  document.documentElement.style.setProperty('--about-h', about.offsetHeight + 'px');
+}
+window.addEventListener('load', setHeights);
+window.addEventListener('resize', setHeights);
