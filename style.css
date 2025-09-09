@@ -2273,3 +2273,26 @@ html, body { height: 100%; }
   	height: 800vh;
   }
 }
+.popup-overlay {
+      			display: flex;
+      			flex-direction: column;
+      			position: fixed;
+      			inset: 0;
+    		}
+.mobile-only {
+	display: none; /* Hide on desktop by default */
+  }
+
+@media (max-width: 768px) {
+ 
+  /* You can hide or show specific elements */
+  .desktop-only {
+    display: none;
+  }
+
+  .mobile-only {
+    display: block;
+  }
+    		
+    		
+}
