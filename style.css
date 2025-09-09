@@ -128,10 +128,11 @@ section, .services, .instance-parent, .about, .process, .story, .contact { scrol
 /* Main hero section */
 .hero {
         position: relative;
-        min-height: 100vh;
+        height: auto;
+        min-height: 100dvh;  
         width: 100%;
         /* Keep decorative assets contained without clipping */
-        overflow: hidden;
+         overflow: hidden; 
 }
 .lightn-2-child {
   	position: absolute;
@@ -1074,7 +1075,7 @@ section, .services, .instance-parent, .about, .process, .story, .contact { scrol
 }
 .instance-parent {
   	position: absolute;
-  	top: 314.8vh;
+  	top: 3124.8vh;
   	left: -3px;
   	width: 1914px;
   	height: 100vh;
@@ -1202,7 +1203,7 @@ section, .services, .instance-parent, .about, .process, .story, .contact { scrol
 }
 .about {
   	position: absolute;
-  	top: 989px;
+  	top: 180dvh;
   	left: 1px;
   	background-color: #0c0c0c;
   	width: 1925px;
@@ -2141,3 +2142,131 @@ section, .services, .instance-parent, .about, .process, .story, .contact { scrol
   	font-family: Poppins;
 }
 
+
+html, body { height: 100%; }
+  
+
+
+.about{
+	top: calc(100dvh / var(--scale));
+}
+
+
+
+
+.services {
+    top: calc(100dvh / var(--scale) * 2);
+    position: absolute;
+    width: 100%;
+}
+.instance-parent{
+	top: calc(100dvh / var(--scale) * 3);
+    position: absolute;
+    width: 100%;
+}
+.process{
+	top: calc(100dvh / var(--scale) * 4);
+    position: absolute;
+    width: 100%;
+}
+.story{
+	top: calc(100dvh / var(--scale) * 5);
+	position: absolute;
+	width: 100%;
+}
+.contact{
+	top: calc(100dvh / var(--scale) * 6);
+	position: absolute;
+	width: 100%;
+}
+.footer{
+	top: calc(100dvh / var(--scale) * 7);
+	position: absolute;
+	width: 100%;
+}
+
+
+/* 1200px से कम के लिए */
+@media (max-width: 1200px) {
+  .about {
+    top: 100vh; 
+  }
+  .services {
+	top: 200vh; 
+  }
+  .instance-parent{
+	top: 300vh;
+    
+  }
+  .process{
+	top: 400vh;
+  }
+  .story{
+	top: 500vh;
+  }
+  .contact{
+	top: 600vh;
+  }
+  .footer{
+	top: 700vh;
+  }
+  .nextframe {
+  	height: 800vh;
+  }
+}
+
+
+/* @media (min-width: 1201px) and (max-width: 1499px) {
+  .about {
+    top: 100vh; 
+  }
+  .services {
+	top: 200vh; 
+  }
+  .instance-parent{
+	top: 300vh;
+    
+  }
+  .process{
+	top: 400vh;
+  }
+  .story{
+	top: 500vh;
+  }
+  .contact{
+	top: 600vh;
+  }
+  .footer{
+	top: 700vh;
+  }
+  .nextframe {
+  	height: 800vh;
+  }
+} */
+@media (min-width: 1500px) and (max-width: 1500px) {
+  .about {
+    top: 100vh; 
+  }
+  .services {
+	top: 200vh; 
+  }
+  .instance-parent{
+	top: 300vh;
+    
+  }
+  .process{
+	top: 400vh;
+  }
+  .story{
+	top: 500vh;
+  }
+  .contact{
+	top: 600vh;
+  }
+  .footer{
+	top: 700vh;
+  }
+  .nextframe {
+  	height: 800vh;
+  }
+}

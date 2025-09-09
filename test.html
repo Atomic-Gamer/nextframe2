@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Full-screen stacked sections</title>
+<link rel="stylesheet" href="./style2.css" />
+<style>
+  :root{
+    /* If you have a fixed header, set this (e.g., 64px) and see .page calc() below */
+    --header-h: 0px;
+  }
+
+  html, body{
+    height: 100%;
+    margin: 0;
+  }
+
+  /* One scroll container for the whole page */
+  body{
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    /* Snap vertically, one section per viewport */
+    scroll-snap-type: y mandatory;   /* change to `proximity` for softer snap */
+  }
+
+  /* Each full-screen “page” */
+  .page{
+    /* Fallback for old browsers */
+    min-height: 100vh;
+    /* Modern dynamic viewport height (handles mobile browser bars) */
+    min-height: calc(100dvh - var(--header-h));
+    /* Extra fallback for iOS/old Android via JS var --vh set below */
+    min-height: calc((var(--vh, 1vh) * 100) - var(--header-h));
+
+    width: 100%;
+    position: relative;              /* contains any absolutely-positioned children */
+    display: grid;                   /* easy centering */
+    place-items: center;
+    scroll-snap-align: start;        /* snap to start of each section */
+    scroll-snap-stop: always;        /* ensures each section stops when scrolling fast */
+  }
+
+  /* Just demo styling */
+  .page h1{
+    font: 700 clamp(24px, 4vw, 48px)/1.1 system-ui, sans-serif;
+    margin: 0;
+    text-align: center;
+    color: white;
+  }
+  .page--a{ background: #111; }
+  .page--b{ background: #222; }
+  .page--c{ background: #333; }
+
+  /* If inner content might be taller than the viewport, let it scroll inside the page */
+  .page__content{
+    max-height: 100%;
+    overflow: auto;
+    padding: 24px;
+    box-sizing: border-box;
+  }
+</style>
+</head>
+<body>
+
+  <!-- Example sections -->
+  <section class="page page--a">
+    <div class="page__content">
+      
+      
+
+          <div class="hero">
+        <div class="nav">
+          <div class="logo">
+            <img class="asset-3-1" alt="" src="img/Logo.svg">
+          </div>
+
+          <div class="nav-buttons">
+            <div class="component-26">
+              <div class="projects" href="#projects">Projects</div>
+            </div>
+            <div class="component-26">
+              <div class="projects" href="#services">Services</div>
+            </div>
+            <div class="component-26">
+              <div class="projects" href="#about">About</div>
+            </div>
+          </div>
+
+          <div class="button-nav">
+            <div class="projects">Connect</div>
+          </div>
+        </div>
+
+        <div class="lightn-2"><div class="lightn-2-child"></div></div>
+        <div class="light-1"><div class="light-1-child"></div></div>
+
+        <div class="h1 pointerglow">
+          <div class="h11">
+            <div class="component-29"><div class="component-29-child"></div></div>
+            <div class="component-30"><div class="component-29-child"></div></div>
+            <div class="component-31"><div class="component-29-child"></div></div>
+            <div class="component-32"><div class="component-29-child"></div></div>
+            <div class="component-33"><div class="component-29-child"></div></div>
+            <div class="component-34"><div class="component-29-child"></div></div>
+            <div class="component-35"><div class="component-29-child"></div></div>
+            <div class="component-36"><div class="component-29-child"></div></div>
+            <div class="component-37"><div class="component-29-child"></div></div>
+            <div class="component-38"><div class="component-29-child"></div></div>
+            <div class="we-frame">WE FRAME</div>
+          </div>
+
+          <div class="component-39">
+            <div class="component-291"><div class="component-29-child"></div></div>
+            <div class="component-301"><div class="component-29-child"></div></div>
+            <div class="component-311"><div class="component-29-child"></div></div>
+            <div class="component-321"><div class="component-29-child"></div></div>
+            <div class="component-331"><div class="component-29-child"></div></div>
+            <div class="our-design">OUR DESIGN</div>
+          </div>
+
+          <div class="component-29-parent">
+            <div class="component-29"><div class="component-29-child"></div></div>
+            <div class="component-30"><div class="component-29-child"></div></div>
+            <div class="component-31"><div class="component-29-child"></div></div>
+            <div class="component-32"><div class="component-29-child"></div></div>
+            <div class="component-33"><div class="component-29-child"></div></div>
+            <div class="component-34"><div class="component-29-child"></div></div>
+            <div class="component-35"><div class="component-29-child"></div></div>
+            <div class="component-36"><div class="component-29-child"></div></div>
+            <div class="component-37"><div class="component-29-child"></div></div>
+            <div class="component-38"><div class="component-29-child"></div></div>
+            <div class="component-391"><div class="component-29-child"></div></div>
+            <div class="component-40"><div class="component-29-child"></div></div>
+            <div class="component-41"><div class="component-29-child"></div></div>
+            <div class="component-42"><div class="component-29-child"></div></div>
+            <div class="component-43"><div class="component-29-child"></div></div>
+            <div class="component-44"><div class="component-29-child"></div></div>
+            <div class="for-your-needs-container">
+              <span class="for">FOR </span><span class="your-needs">YOUR NEEDS</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="p1">
+          <div class="we-create-websites">
+            We create websites that combine &lt;design&gt; and &lt;development&gt; to give your brand a strong online presence. Every project is built to look unique, work smoothly, and help you connect with your audience in the best way.
+          </div>
+        </div>
+
+        <div class="button" id="buttonContainer">
+          <img class="light-icon" alt="" src="img/Light.png">
+          <div class="background-blur"></div>
+          <div class="stroke-hover-animation"></div>
+          <div class="lets-talk">Let’s talk</div>
+        </div>
+
+        <div class="cta-2"><b class="projects3">Projects</b></div>
+
+        <img class="bcg-image2-icon" alt="" src="img/bcg image22.svg">
+        <img class="bcg-image2-icon1" alt="" src="img/bcg image2.svg">
+
+        <div class="bcg-image4-wrapper">
+          <img class="bcg-image4-icon" alt="" src="img/Group 14.svg">
+        </div>
+
+        <img class="nextframe-child" alt="" src="img/Group 15.svg">
+
+        <div class="mac1-parent">
+          <div class="mac1"><div class="mac1-child" id="mac1-1"></div></div>
+          <div class="mac1"><div class="mac1-child" id="mac1-2"></div></div>
+          <div class="mac1"><div class="mac1-child" id="mac1-3"></div></div>
+        </div>
+      </div>
+
+
+
+    </div>
+  </section>
+
+  <section class="page page--b">
+    <div class="page__content">
+      <h1>Page 2</h1>
+      <p style="color:#bbb">Resize the window or try on mobile—still fits.</p>
+    </div>
+  </section>
+
+  <section class="page page--c">
+    <div class="page__content">
+      <h1>Page 3</h1>
+      <p style="color:#bbb">Scroll snaps to each “page”.</p>
+    </div>
+  </section>
+
+<script>
+  /* Mobile/old-browser fallback for 100vh bugs */
+  const setVh = () => {
+    const vh = window.innerHeight * 0.01;            // visual viewport height
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  };
+  setVh();
+  window.addEventListener('resize', setVh);
+
+  /* If you have a fixed header, measure it once and subtract from each section */
+  // const header = document.querySelector('.site-header');
+  // if (header) {
+  //   document.documentElement.style.setProperty('--header-h', `${header.offsetHeight}px`);
+  // }
+</script>
+</body>
+</html>

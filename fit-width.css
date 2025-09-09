@@ -49,3 +49,28 @@ html, body{
   outline: 2px dashed #555;
   outline-offset: 3px;
 }
+
+.hero,.about,.services,.instance-parent,.process,.story, .contact, .footer{ min-height: calc(100dvh / var(--scale)); }
+@media (max-width: 1200px) {
+  .about {
+    min-height: 100dvh;
+  }
+  .services {
+	min-height: 100dvh; 
+  }
+  .instance-parent {
+    min-height: 100dvh;
+  }
+  .process {
+    min-height: 100dvh;
+  } 
+  .story {
+    min-height: 100dvh;
+  }
+  .contact {
+    min-height: 100dvh;
+  }
+  .footer {
+    min-height: 100dvh;
+  }
+}
