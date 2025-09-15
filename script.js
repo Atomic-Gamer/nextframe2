@@ -266,7 +266,7 @@ document.addEventListener('click', (e) => {
 
 (() => {
   // ====== CONFIG ======
-  const ENDPOINT = "https://script.google.com/macros/s/AKfycbwywRU0sxSkmavu_4hACfCS_y8J4p1woHu9lkUb3BScMn856ywUUQtTki0j0y98d7GT/exec"; // <-- change this
+  const ENDPOINT = "https://script.google.com/macros/s/AKfycbzyiQr-RoESKytc9AyLN0TbKZeEOBPYVw1WGjYR59mjYgghRk3ERqkzMHYY4hv8oMgl/exec"; // <-- change this
 
   // ====== HELPERS ======
   const $ = (s, r=document) => r.querySelector(s);
