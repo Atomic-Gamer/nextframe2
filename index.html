@@ -7,8 +7,7 @@
 
   <link rel="stylesheet" href="./style.css" />
   <link rel="stylesheet" href="./fit-width.css" />
-    	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=[object Object]&display=swap" />
-  	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=[object Object]&display=swap" />
+  
   	<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
@@ -25,23 +24,23 @@
     <!-- Keep ALL your existing markup inside .nextframe -->
     <div class="nextframe">
 		
-      <div class="hero">
+      <div class="hero" id="hero">
         <div class="nav">
           <div class="logo">
             <img class="asset-3-1" alt="" src="img/Logo.svg">
           </div>
 
           <div class="nav-buttons">
-            <div class="component-26">
-              <div class="projects" href="#projects">Projects</div>
-            </div>
-            <div class="component-26">
-              <div class="projects" href="#services">Services</div>
-            </div>
-            <div class="component-26">
-              <div class="projects" href="#about">About</div>
-            </div>
-          </div>
+  <div class="component-26">
+    <a class="projects" href="#projects">Projects</a>
+  </div>
+  <div class="component-26">
+    <a class="projects" href="#services">Services</a>
+  </div>
+  <div class="component-26">
+    <a class="projects" href="#about">About</a>
+  </div>
+</div>
 
           <div class="button-nav">
             <div class="projects">Connect</div>
@@ -108,10 +107,10 @@
           <img class="light-icon" alt="" src="img/Light.png">
           <div class="background-blur"></div>
           <div class="stroke-hover-animation"></div>
-          <div class="lets-talk">Let’s talk</div>
+          <div class="lets-talk"><a style="text-decoration: none; color: #fff;" target="_blank" href="https://wa.me/+918887268305">Let’s talk</a></div>
         </div>
 
-        <div class="cta-2"><b class="projects3">Projects</b></div>
+        <div class="cta-2"><b class="projects3"><a style="text-decoration: none; color: #fff;" href="#projects">Projects</a></b></div>
 
         <img class="bcg-image2-icon" alt="" src="img/bcg image22.svg">
         <img class="bcg-image2-icon1" alt="" src="img/bcg image2.svg">
@@ -373,14 +372,16 @@
             						<p class="have-a-question">just want to know about us?</p>
             						<p class="have-a-question">Say Hii, via email</p>
             						<p class="nextframegmailcom">
-              							<b>nextframe@gmail.com</b>
+              							<b>
+      <a style="text-decoration: none; color: #fff;" href="mailto:nextframe@gmail.com">nextframe@gmail.com</a>
+    </b>
             						</p>
           					</div>
           					<div class="prefer-to-talk-container">
             						<p class="have-a-question">Prefer to talk over phone?</p>
             						<p class="have-a-question">No problem ring us!</p>
             						<p class="nextframegmailcom">
-              							<b>+91 8887268305</b>
+              							<b><a style="text-decoration: none; color: #fff;" target="_blank" href="https://wa.me/+918887268305">+91 8887268305</a></b>
             						</p>
           					</div>
         				</div>
@@ -388,45 +389,85 @@
       			<div class="group-div">
         				<div class="glow10">
         				</div>
-        				<div class="frame-parent">
-          					<div class="name-wrapper">
-            						<b class="name">Name</b>
-          					</div>
-          					<div class="any-thing-else-wrapper">
-            						<b class="name">Any thing else?</b>
-          					</div>
-          					<div class="email-wrapper">
-            						<b class="name">Email</b>
-          					</div>
-          					<div class="company-wrapper">
-            						<b class="name">Company</b>
-          					</div>
-          					<div class="how-can-we-help-parent">
-            						<b class="name">How can we help ?</b>
-            						<img class="polygon-icon" alt="" src="img/Polygon 7.svg">
-            						
-          					</div>
-          					<div class="your-budget-parent">
-            						<b class="name">Your budget</b>
-            						<img class="frame-child11" alt="" src="img/Polygon 7.svg">
-            						
-          					</div>
-          					<div class="website-wrapper">
-            						<b class="name">Website</b>
-          					</div>
-          					<div class="phone-wrapper">
-            						<b class="name">Phone</b>
-          					</div>
-          					<div class="button1">
-            						<img class="light-icon" alt="" src="img/Light.png">
-            						
-            						<div class="background-blur">
-            						</div>
-            						<div class="stroke-hover-animation">
-            						</div>
-            						<b class="lets-talk1">Submit</b>
-          					</div>
-        				</div>
+							<form id="contact-form" class="frame-parent" novalidate>
+  <div class="name-wrapper">
+    <input class="name" type="text" name="name" placeholder="Name" required>
+  </div>
+
+  <div class="any-thing-else-wrapper">
+    <input class="name" type="text" placeholder="Any thing else?">
+  </div>
+
+  <div class="email-wrapper">
+    <input 
+      class="name" 
+      type="email" 
+      placeholder="Email" 
+      name="email" 
+      autocomplete="email"
+      required
+      pattern="^[^@\s]+@[^@\s]+\.[^@\s]+$"
+      title="Please enter a valid email address (must include @ and domain)"
+    >
+  </div>
+
+
+  <div class="company-wrapper">
+    <input class="name" type="text" placeholder="Company">
+  </div>
+
+  <div class="how-can-we-help-parent field dd">
+    <input class="name dd-input" type="text" placeholder="How can we help ?" readonly>
+    <img class="polygon-icon dd-toggle" alt="" src="img/Polygon 7.svg">
+    <ul class="help-dropdown dd-menu" hidden>
+      <li data-value="Website Design/ Development">Website Design/ Development</li>
+      <li data-value="App Design/ Development">App Design/ Development</li>
+      <li data-value="SEO">SEO</li>
+      <li data-value="Logo design">Logo design</li>
+      <li data-value="Graphics Design">Graphics Design</li>
+      <li data-value="Consulting">Consulting</li>
+    </ul>
+  </div>
+
+  <div class="your-budget-parent aa">
+    <input class="name budget-input" type="text" placeholder="Your budget" readonly>
+    <img class="frame-child11 budget-toggle" alt="" src="img/Polygon 7.svg">
+    <ul class="budget-dropdown budget-menu" hidden aria-hidden="true">
+      <li data-value="Less than ₹15,000 / $170">Less than ₹15,000 / $170</li>
+      <li data-value="Under ₹30,000 / $340">Under ₹30,000 / $340</li>
+      <li data-value="Under ₹50,000 / $570">Under ₹50,000 / $570</li>
+      <li data-value="Under ₹1,00,000 / $1100">Under ₹1,00,000 / $1100</li>
+      <li data-value="More than ₹2,00,000 / $2300">More than ₹2,00,000 / $2300</li>
+    </ul>
+  </div>
+
+  <div class="website-wrapper">
+    <input class="name" type="url" placeholder="Website">
+  </div>
+
+  <div class="phone-wrapper">
+    <input 
+      class="name" 
+      type="tel" 
+      name="phone" 
+      placeholder="Phone"
+      maxlength="10"
+      inputmode="numeric"
+      required
+      oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+    >
+  </div>
+
+  <div class="button1">
+    <img class="light-icon" alt="" src="img/Light.png">
+    <div class="background-blur"></div>
+    <div class="stroke-hover-animation"></div>
+    <button type="submit" class="lets-talk1"><b>Submit</b></button>
+  </div>
+
+</form>
+
+
       			</div>
       			<div class="contact1">contact.</div>
       			<img class="phone-message-icon" alt="" src="img/phone-message1.svg">
@@ -440,15 +481,19 @@
       			<div class="lets-have-a-container">
         				<p class="have-a-question">Let’s have a chat</p>
         				<p class="have-a-question">
-          					<b>+00 00000000</b>
+          					<b><a style="text-decoration: none; color: #fff;" target="_blank" href="https://wa.me/+918887268305">+91 8887268305</a></b>
+            						
         				</p>
       			</div>
       			<div class="send-us-an-container">
-        				<p class="have-a-question">Send us an email</p>
-        				<p class="have-a-question">
-          					<b>nextframe@gmail.com</b>
-        				</p>
-      			</div>
+  <p class="have-a-question">Send us an email</p>
+  <p class="have-a-question">
+    <b>
+      <a style="text-decoration: none; color: #fff;" href="mailto:nextframe@gmail.com">nextframe@gmail.com</a>
+    </b>
+  </p>
+</div>
+
       			<div class="nextframe1">
         				<p class="have-a-question">NextFRAME</p>
       			</div>
@@ -479,10 +524,7 @@
       			<img class="asset-3-2" alt="" src="img/footerlogo.svg">
       			
     		</div>
-    		<div class="back-button">
-      			<img class="back-button-child" alt="" src="img/Polygon 2.svg">
-      			
-    		</div>
+    		
     		
     </div>
 
@@ -490,10 +532,11 @@
 
 <div class="sticky-contact">
       			<div class="wrapper">
-        				<div class="div9">+91 8887268305</div>
+        				<div class="div9"><a style="text-decoration: none; color: #fff;" target="_blank" href="https://wa.me/+918887268305">
+            						+91 8887268305</a></div>
       			</div>
       			<div class="container">
-        				<div class="div9">Sey Hello</div>
+        				<div class="div9">Say Hello</div>
       			</div>
     		</div>
 
@@ -501,12 +544,12 @@
 
 
   </div>
+  
 
+<!-- Back button -->
+   <a href="#hero"><div class="back-button"></div></a>
+  
 </div>
-
-
-
-
 
 
 
@@ -901,7 +944,7 @@
         				<p style="margin: 0;">Copyright@2025NextFRAME.|All rights reserved. </p>
       			</div>
     		</div>
-    		<img style="position: fixed;  top: 85%;  left: 39px;  width: 48px;  height: 48px;  cursor: pointer;" alt="" src="imgs/fixed button.svg" id="fixedButtonIcon">
+    		<a href="#hero"><img style="position: fixed;  top: 82%;  left: 39px;  width: 48px;  height: 48px;  cursor: pointer;" alt="" src="imgs/fixed button.svg" id="fixedButtonIcon"></a>
     		
     		
           <!-- down menu bar -->
@@ -952,5 +995,155 @@
 </div>
 
   <script src="./script.js" defer></script>
+  
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // setup any field that has class "dd"
+  document.querySelectorAll('.aa').forEach((container) => {
+    const input    = container.querySelector('.budget-input');
+    const toggle   = container.querySelector('.budget-toggle');
+    const menu     = container.querySelector('.budget-menu');
+
+    // Ensure closed on load
+    menu.hidden = true;
+
+    // Move menu to <body> so it can't push layout or be clipped
+    if (menu.parentElement !== document.body) {
+      menu.__originalParent = container;   // keep reference to put back if needed
+      document.body.appendChild(menu);
+    }
+
+    function placeMenu() {
+      const r = input.getBoundingClientRect();
+      menu.style.top = (r.bottom + 8) + 'px';  // below input
+      menu.style.left = r.left + 'px';
+      menu.style.minWidth = r.width + 'px';
+    }
+
+    function openMenu() {
+      placeMenu();
+      menu.hidden = false;
+      container.classList.add('open');
+    }
+
+    function closeMenu() {
+      menu.hidden = true;
+      container.classList.remove('open');
+    }
+
+    // Toggle via arrow and open via input
+    if (toggle) {
+      toggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        menu.hidden ? openMenu() : closeMenu();
+      });
+    }
+    input.addEventListener('click', (e) => {
+      e.stopPropagation();
+      openMenu();
+    });
+
+    // Select an option
+    menu.addEventListener('click', (e) => {
+      const li = e.target.closest('li[data-value]');
+      if (!li) return;
+      input.value = li.dataset.value;
+      closeMenu();
+    });
+
+    // Close on outside click
+    document.addEventListener('click', (e) => {
+      if (!container.contains(e.target) && e.target !== menu && !menu.contains(e.target)) {
+        closeMenu();
+      }
+    });
+
+    // Keep aligned on resize/scroll
+    window.addEventListener('resize', () => { if (!menu.hidden) placeMenu(); });
+    window.addEventListener('scroll',  () => { if (!menu.hidden) placeMenu(); }, true);
+
+    // Also close if page restored from bfcache
+    window.addEventListener('pageshow', (ev) => {
+      if (ev.persisted) closeMenu();
+    });
+  });
+});
+</script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // setup any field that has class "dd"
+  document.querySelectorAll('.dd').forEach((container) => {
+    const input    = container.querySelector('.dd-input');
+    const toggle   = container.querySelector('.dd-toggle');
+    const menu     = container.querySelector('.dd-menu');
+
+    // Ensure closed on load
+    menu.hidden = true;
+
+    // Move menu to <body> so it can't push layout or be clipped
+    if (menu.parentElement !== document.body) {
+      menu.__originalParent = container;   // keep reference to put back if needed
+      document.body.appendChild(menu);
+    }
+
+    function placeMenu() {
+      const r = input.getBoundingClientRect();
+      menu.style.top = (r.bottom + 8) + 'px';  // below input
+      menu.style.left = r.left + 'px';
+      menu.style.minWidth = r.width + 'px';
+    }
+
+    function openMenu() {
+      placeMenu();
+      menu.hidden = false;
+      container.classList.add('open');
+    }
+
+    function closeMenu() {
+      menu.hidden = true;
+      container.classList.remove('open');
+    }
+
+    // Toggle via arrow and open via input
+    if (toggle) {
+      toggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        menu.hidden ? openMenu() : closeMenu();
+      });
+    }
+    input.addEventListener('click', (e) => {
+      e.stopPropagation();
+      openMenu();
+    });
+
+    // Select an option
+    menu.addEventListener('click', (e) => {
+      const li = e.target.closest('li[data-value]');
+      if (!li) return;
+      input.value = li.dataset.value;
+      closeMenu();
+    });
+
+    // Close on outside click
+    document.addEventListener('click', (e) => {
+      if (!container.contains(e.target) && e.target !== menu && !menu.contains(e.target)) {
+        closeMenu();
+      }
+    });
+
+    // Keep aligned on resize/scroll
+    window.addEventListener('resize', () => { if (!menu.hidden) placeMenu(); });
+    window.addEventListener('scroll',  () => { if (!menu.hidden) placeMenu(); }, true);
+
+    // Also close if page restored from bfcache
+    window.addEventListener('pageshow', (ev) => {
+      if (ev.persisted) closeMenu();
+    });
+  });
+});
+</script>
+
 </body>
 </html>

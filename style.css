@@ -1,5 +1,5 @@
 /* ===== Smooth scrolling + fix scroll jank ===== */
-html { scroll-behavior: smooth; }
+/* html { scroll-behavior: smooth; } */
 body { 
 	overflow-x: hidden; 
 	/* cursor: url('img/cursor.svg') 16 16, auto; */
@@ -101,6 +101,10 @@ section, .services, .instance-parent, .about, .process, .story, .contact { scrol
   	justify-content: flex-start;
   	gap: 89px;
 }
+.nav-buttons a {
+  	text-decoration: none;
+  	color: #d9d9d9;
+}
 .button-nav {
   	position: absolute;
   	top: 32px;
@@ -123,6 +127,7 @@ section, .services, .instance-parent, .about, .process, .story, .contact { scrol
   	overflow: hidden;
   	font-size: 18px;
   	color: #969696;
+	z-index: 1000;
 }
 
 /* Main hero section */
@@ -1781,7 +1786,7 @@ section, .services, .instance-parent, .about, .process, .story, .contact { scrol
   	background-color: #fff;
   	width: 354px;
   	height: 66px;
-  	overflow: hidden;
+  	/* overflow: hidden; */
 }
 .frame-child11 {
   	position: absolute;
@@ -1801,7 +1806,7 @@ section, .services, .instance-parent, .about, .process, .story, .contact { scrol
   	background-color: #fff;
   	width: 347px;
   	height: 66px;
-  	overflow: hidden;
+  	/* overflow: hidden; */
 }
 .website-wrapper {
   	position: absolute;
@@ -1827,8 +1832,13 @@ section, .services, .instance-parent, .about, .process, .story, .contact { scrol
 }
 .lets-talk1 {
   	position: absolute;
-  	top: 23px;
-  	left: 56px;
+  	top: 26px;
+  	left: 54px;
+	font-size: 22px;
+	background: transparent;
+	border: none;
+	color: #fff;
+	cursor: pointer;
 }
 
 .button1 {
@@ -1857,7 +1867,7 @@ section, .services, .instance-parent, .about, .process, .story, .contact { scrol
     linear-gradient(#090909, #090909) padding-box, /* inner */
     linear-gradient(to top right, #000DFF, #F50000) border-box; /* border */
   	box-sizing: border-box;
-  	overflow: hidden;
+  	/* overflow: hidden; */
 }
 .group-div {
   	position: absolute;
@@ -2063,42 +2073,49 @@ section, .services, .instance-parent, .about, .process, .story, .contact { scrol
   	overflow: hidden;
   	font-size: 24px;
 }
-.back-button-child {
-  	width: 34px;
-  	position: absolute;
-  	top: 16.5px;
-	left: 18px;
-  	border-radius: 6px;
-  	height: 34px;
-}
 .back-button {
-   position: fixed; 
-   bottom: 56px;        /* stick to bottom */
-   left: 320px;          /* stick to left */
-   border-radius: 35px;
-   background: linear-gradient(219.41deg, #c4c4c4, #5e5e5e);
-   width: 70px;
-   height: 70px;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   box-sizing: border-box;
+  position: fixed;
+  bottom: 56px;
+  left: 150px ;
+  width: 60px;
+  height: 60px;
+  border-radius: 35px;
+  background: linear-gradient(219.41deg, #c4c4c4, #5e5e5e);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
 
-   opacity: 0;              /* hidden initially */
-   pointer-events: none;    /* not clickable when hidden */
-   transition: opacity 0.3s ease;
-   z-index: 999;            /* keep on top */
+  opacity: 0;               /* hidden until threshold */
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity .25s ease, visibility .25s ease;
+  z-index: 999999;
+}
+
+/* Arrow icon (uses your SVG file) */
+.back-button::before {
+  content: "";
+  width: 34px;
+  height: 34px;
+  border-radius: 6px;
+  background: center/contain no-repeat url("img/Polygon 2.svg");
 }
 
 .back-button.show {
-   opacity: 0.4;            /* visible */
-   pointer-events: auto;    /* clickable */
+  opacity: .9;
+  visibility: visible;
+  pointer-events: auto;
+  cursor: pointer;
 }
+
+
+
 .div9 {
   	position: relative;
   	background: linear-gradient(90deg, #d6d6d6, #707070);
   	-webkit-background-clip: text;
-  	-webkit-text-fill-color: transparent;
+  	-webkit-text-fill-color: #ffffff36;
 }
 .wrapper {
   	position: absolute;
@@ -2296,3 +2313,137 @@ html, body { height: 100%; }
     		
     		
 }
+
+
+.name {
+  position: absolute;
+  top: 25px;
+  left: 33px;
+  font-size: 15px;
+  font-weight: bolder;
+
+  background: none;
+  border: none;
+  outline: none;
+
+  /* Optional if your input has no visible size yet */
+  width: 200px; 
+}
+
+.name::placeholder {
+  font-size: 16px;
+  font-weight: bolder;
+  color: inherit;
+  opacity: 1;
+}
+
+
+
+/* make the container the positioning context */
+.your-budget-parent { position: relative; }
+
+/* rotate arrow when open (optional) */
+.your-budget-parent .budget-toggle { transition: transform .2s ease; }
+.your-budget-parent.open .budget-toggle { transform: rotate(180deg); }
+
+/* dropdown base */
+.budget-dropdown[hidden] { display: none; }
+.budget-dropdown {
+	
+  position: fixed;     /* JS sets top/left based on input position */
+  z-index: 9999;
+  list-style: none;
+  background: #000;   
+  color: #fff;    /* adjust to your theme if needed */
+  margin: 0;
+  padding: 4px 0;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.12);
+  overflow: hidden;
+}
+
+/* dropdown items */
+.budget-dropdown li {
+  padding: 10px 14px;
+  cursor: pointer;
+  user-select: none;
+  font-family: poppins;
+  white-space: nowrap;
+  border-bottom: 1px solid rgba(117, 117, 117, 0.747);
+}
+.budget-dropdown li:last-child { border-bottom: none; }
+.budget-dropdown li:hover { background: #f2f2f2;color: #000; }
+
+
+
+
+
+/* Your existing placeholder/input look */
+.name {
+  position: absolute;
+  top: 21px;
+  left: 33px;
+  font-size: 16px;
+  font-weight: bolder;
+  background: none;
+  border: none;
+  outline: none;
+  width: calc(100% - 90px);  /* leave room for the arrow; tweak as needed */
+}
+.name::placeholder {
+  font-size: 16px;
+  font-weight: bolder;
+  opacity: 1;
+}
+
+/* Put the arrow in a fixed spot within the field */
+.dd-toggle {
+  position: absolute;
+  right: 16px;
+  top: 22px;
+  cursor: pointer;
+  transition: transform .2s ease;
+}
+.dd.open .dd-toggle { transform: rotate(180deg); }
+
+/* Dropdown: hidden by default; rendered OUTSIDE layout (in <body>) */
+.dd-menu[hidden] { display: none !important; }
+.dd-menu {
+  position: fixed;   /* viewport coords */
+  z-index: 999999;
+  list-style: none;
+  background: #000;
+  margin: 0;
+  padding: 4px 0;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.12);
+  overflow: hidden;
+}
+
+/* Items */
+.dd-menu li {
+  padding: 10px 14px;
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  color: #fff;
+  font-family: poppins;
+  border-bottom: 1px solid rgba(117, 117, 117, 0.747);
+}
+.dd-menu li:last-child { border-bottom: none; }
+.dd-menu li:hover { background: #f2f2f2;color: #000; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

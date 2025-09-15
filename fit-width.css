@@ -7,10 +7,9 @@
   --page-bg: #0b0b0b;
 }
 
-html{
-  /* native smooth scroll for manual wheel/keyboard; JS handles anchor jumps */
+
   scroll-behavior: smooth;
-}
+
 
 html, body{
   margin: 0;
@@ -72,5 +71,30 @@ html, body{
   }
   .footer {
     min-height: 100dvh;
+  }
+}
+
+@media (min-width: 1400px) and (max-width: 1500px) {
+  .asset-3-2 {
+    top: 810px;
+  }
+  .nextframe1{
+    top: 925px;
+  }
+  .copyright2025nextframeall-r {
+    top: 925px;
+  }
+  .footer {
+    min-height: 110dvh;
+  }
+  .nextframe{
+    height: calc(100dvh / var(--scale) * 8.1);
+  }
+}
+
+@media(min-width: 1500px) {
+  
+  .nextframe{
+    height: calc(100dvh / var(--scale) * 8.1);
   }
 }
