@@ -492,21 +492,48 @@ section, .services, .instance-parent, .about, .process, .story, .contact { scrol
   	background-color: rgba(255, 255, 255, 0.01);
 }
 .stroke-hover-animation {
-  	position: absolute;
-  	top: 5px;
-  	left: 7px;
-  	border-radius: 22px;
-  	background: linear-gradient(84.26deg, rgba(0, 19, 114, 0.5), rgba(168, 0, 0, 0.5));
-  	border: 1px solid #001372;
-  	box-sizing: border-box;
-  	width: 180px;
-  	height: 68px;
-  	overflow: hidden;
+	position: absolute;
+	top: 5px;
+	left: 7px;
+	border-radius: 22px;
+	border: 1px solid #001372;
+	box-sizing: border-box;
+	width: 180px;
+	height: 68px;
+	overflow: hidden;
+
+	/* gradient has both start + hover colors */
+	background: linear-gradient(
+		135deg, /* 135° = top-right → bottom-left */
+		rgba(0, 19, 114, 0.699) 0%,
+		rgba(110, 10, 10, 0.5) 50%,
+		rgba(211, 3, 3, 0.5) 50%,
+		rgba(3, 60, 218, 0.651) 100%
+	);
+	background-size: 200% 200%;
+	background-position: top right;
+
+	/* smooth animation */
+	transition: background-position 0.6s ease, border-color 0.4s ease;
 }
+
+.stroke-hover-animation:hover {
+	background-position: bottom left; /* move diagonally */
+	border-color: #720000;
+}
+
+
+
+
+
+
+
+
+
 .lets-talk {
   	position: absolute;
-  	top: 23px;
-  	left: 48px;
+  	top: 18px;
+  	left: 40px;
   	font-weight: 600;
 }
 .button {
@@ -2435,9 +2462,31 @@ html, body { height: 100%; }
 
 
 
+/* Custom cursor styles */
 
+body {
+  cursor: none; /* hide default cursor */
+}
 
+.cursor__ball {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+}
 
+.cursor__ball circle {
+  fill: #cccbcb; /* color */
+}
+
+.cursor__ball--big circle {
+  opacity: 0.2;
+}
+
+.cursor__ball--small circle {
+  opacity: 1;
+}
 
 
 

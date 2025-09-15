@@ -266,7 +266,7 @@ document.addEventListener('click', (e) => {
 
 (() => {
   // ====== CONFIG ======
-  const ENDPOINT = "https://script.google.com/macros/s/AKfycbwywRU0sxSkmavu_4hACfCS_y8J4p1woHu9lkUb3BScMn856ywUUQtTki0j0y98d7GT/exec"; // <-- change this
+  const ENDPOINT = "https://script.google.com/macros/s/AKfycbzyiQr-RoESKytc9AyLN0TbKZeEOBPYVw1WGjYR59mjYgghRk3ERqkzMHYY4hv8oMgl/exec"; // <-- change this
 
   // ====== HELPERS ======
   const $ = (s, r=document) => r.querySelector(s);
@@ -385,3 +385,18 @@ document.addEventListener('DOMContentLoaded', () => {
   updateStickyVisibility();
 });
 
+
+
+
+
+
+// cursor 
+
+const bigBall = document.querySelector('.cursor__ball--big');
+const smallBall = document.querySelector('.cursor__ball--small');
+
+document.addEventListener('mousemove', (e) => {
+  // Use clientX / clientY (relative to viewport, not page)
+  gsap.to(bigBall, { duration: 0.4, x: e.clientX - 15, y: e.clientY - 15 });
+  gsap.to(smallBall, { duration: 0.1, x: e.clientX - 5, y: e.clientY - 5 });
+});

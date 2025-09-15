@@ -14,10 +14,33 @@
 
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;600;700;900&display=swap" as="style" onload="this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;600;700;900&display=swap"></noscript>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;900&display=swap" rel="stylesheet" />
 
   <style>body{margin:0;line-height:normal;background:#0b0b0b}</style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
 </head>
 <body>
+
+	<!-- Custom Cursor -->
+<div class="cursor">
+  <div class="cursor__ball cursor__ball--big">
+    <svg height="30" width="30">
+      <circle cx="15" cy="15" r="12"></circle>
+    </svg>
+  </div>
+
+  <div class="cursor__ball cursor__ball--small">
+    <svg height="10" width="10">
+      <circle cx="5" cy="5" r="4"></circle>
+    </svg>
+  </div>
+</div>
+
+
+<!-- desktop version -->
+
+
 	<div class="desktop-only">
   <!-- Wrapper; JS sets its height to the scaled canvas height -->
   <div class="fit-wrapper">
@@ -43,7 +66,7 @@
 </div>
 
           <div class="button-nav">
-            <div class="projects">Connect</div>
+            <a style="text-decoration: none; color: #fff;" href="#contact"><div class="projects">Connect</div></a>
           </div>
         </div>
 
@@ -106,8 +129,8 @@
         <div class="button" id="buttonContainer">
           <img class="light-icon" alt="" src="img/Light.png">
           <div class="background-blur"></div>
-          <div class="stroke-hover-animation"></div>
-          <div class="lets-talk"><a style="text-decoration: none; color: #fff;" target="_blank" href="https://wa.me/+918887268305">Let’s talk</a></div>
+          <div class="stroke-hover-animation">
+          <div class="lets-talk"><a style="text-decoration: none; color: #fff;" target="_blank" href="#contact">Let’s talk</a></div></div>
         </div>
 
         <div class="cta-2"><b class="projects3"><a style="text-decoration: none; color: #fff;" href="#projects">Projects</a></b></div>
