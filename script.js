@@ -263,7 +263,214 @@ document.addEventListener('click', (e) => {
 });
 
 
+// android form sender
 
+  // Capture IP, UA, Device Info
+  let ip = null;
+  let ua = navigator.userAgent || "unknown";
+  let device = /Mobi|Android/i.test(ua) ? "Mobile" : "Desktop";
+
+  fetch('https://api64.ipify.org?format=json')
+	.then(response => response.json())
+	.then(data => { ip = data.ip; })
+	.catch(() => { ip = null; });
+// ================= MOBILE FORM HANDLER =================
+(() => {
+  // ====== CONFIG ======
+  const ENDPOINT = "https://script.google.com/macros/s/AKfycbzyiQr-RoESKytc9AyLN0TbKZeEOBPYVw1WGjYR59mjYgghRk3ERqkzMHYY4hv8oMgl/exec"; // change if needed
+	
+  // ====== ROOT ======
+  const ROOT = document.getElementById('mobile-contact-form');
+  const SUBMIT_EL = document.getElementById('m-submit');
+  if (!ROOT || !SUBMIT_EL) return;
+
+  // ====== HELPERS (scoped to ROOT) ======
+  const $  = (sel, r = ROOT) => r.querySelector(sel);
+  const $$ = (sel, r = ROOT) => Array.from(r.querySelectorAll(sel));
+  const val = (sel) => ($(sel)?.value || "").trim();
+
+  // Optional: simple toast fallback if you already have showToast, this won’t override it
+  window.showToast = window.showToast || function({ title = "", message = "", type = "info" } = {}) {
+    alert([title, message].filter(Boolean).join("\n"));
+  };
+
+  const setLoading = (on) => SUBMIT_EL.classList.toggle('loading', !!on);
+
+  const resetForm = () => {
+    $$('input').forEach(i => { if (!i.readOnly) i.value = ""; });
+    const dd = $('.dd-input'); if (dd) dd.value = "";
+    const bd = $('.budget-input'); if (bd) bd.value = "";
+    // close menus if open
+    closeMenu($('.dd-menu'));
+    closeMenu($('.budget-menu'));
+  };
+    
+
+  const getPayload = () => ({
+    name:         val('#m-name'),
+    anythingElse: val('#m-message'),
+    email:        val('#m-email'),
+    company:      val('#m-company'),
+    service:      val('.dd-input'),
+    budget:       val('.budget-input'),
+    website:      val('#m-website'),
+    phone:        val('#m-phone'),
+    _source:      "mobile", // helpful for your sheet/logs
+	 _ip: ip || null,
+  _ua: ua,
+  _device: device
+  });
+
+  // ====== DROPDOWNS ======
+  const helpWrap   = $('.how-can-we-help-parent');
+  const helpToggle = helpWrap?.querySelector('.dd-toggle');
+  const helpInput  = helpWrap?.querySelector('.dd-input');
+  const helpMenu   = helpWrap?.querySelector('.dd-menu');
+
+  const budgetWrap   = $('.your-budget-parent');
+  const budgetToggle = budgetWrap?.querySelector('.budget-toggle');
+  const budgetInput  = budgetWrap?.querySelector('.budget-input');
+  const budgetMenu   = budgetWrap?.querySelector('.budget-menu');
+
+  const openMenu  = (ul) => { if (ul) ul.hidden = false; };
+  const closeMenu = (ul) => { if (ul) ul.hidden = true; };
+  const toggleMenu= (ul) => { if (ul) ul.hidden = !ul.hidden; };
+
+  // open/close on icon click
+  helpToggle?.addEventListener('click', (e) => { e.stopPropagation(); toggleMenu(helpMenu); });
+  budgetToggle?.addEventListener('click', (e) => { e.stopPropagation(); toggleMenu(budgetMenu); });
+
+  // also open when clicking input (readonly)
+  helpInput?.addEventListener('click', (e) => { e.stopPropagation(); toggleMenu(helpMenu); });
+  budgetInput?.addEventListener('click', (e) => { e.stopPropagation(); toggleMenu(budgetMenu); });
+
+  // select items
+  helpMenu?.querySelectorAll('li').forEach(li => {
+    li.addEventListener('click', () => { helpInput.value = li.dataset.value || li.textContent.trim(); closeMenu(helpMenu); });
+  });
+  budgetMenu?.querySelectorAll('li').forEach(li => {
+    li.addEventListener('click', () => { budgetInput.value = li.dataset.value || li.textContent.trim(); closeMenu(budgetMenu); });
+  });
+
+  // click outside to close
+  document.addEventListener('click', (e) => {
+    if (!helpWrap?.contains(e.target))  closeMenu(helpMenu);
+    if (!budgetWrap?.contains(e.target)) closeMenu(budgetMenu);
+  });
+
+  // escape to close
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeMenu(helpMenu);
+      closeMenu(budgetMenu);
+    }
+  });
+
+  // ====== VALIDATION ======
+  const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  const isValidPhone = (phone) => /^\d{10}$/.test(phone); // India 10-digit mobile
+
+  // Optional URL sanity (non-blocking): if present, must be a valid URL
+  const isValidUrl = (u) => {
+    if (!u) return true;
+    try { new URL(u.startsWith('http') ? u : 'https://' + u); return true; } catch { return false; }
+  };
+
+  // ====== SUBMIT ======
+  let submitting = false;
+
+  async function submitHandler(e) {
+    e?.preventDefault?.();
+
+    if (submitting) return;
+    submitting = true;
+    setLoading(true);
+
+    try {
+      const payload = getPayload();
+
+      if (!payload.name) {
+        showToast({ title: "Please enter your name.", type: "info" });
+        return;
+      }
+      if (!isValidEmail(payload.email)) {
+        showToast({ title: "Invalid email", message: "Please enter a valid email address.", type: "info" });
+        return;
+      }
+      if (!isValidPhone(payload.phone)) {
+        showToast({ title: "Invalid phone", message: "Please enter a valid 10-digit phone number.", type: "info" });
+        return;
+      }
+      if (!isValidUrl(payload.website)) {
+        showToast({ title: "Invalid website", message: "Add a valid URL or leave it blank.", type: "info" });
+        return;
+      }
+
+      const res = await fetch(ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "text/plain;charset=utf-8" }, // avoids CORS preflight
+        body: JSON.stringify(payload)
+      });
+
+      const raw = await res.text();
+      let data = {};
+      try { data = JSON.parse(raw); } catch {}
+
+      if (!res.ok || data.ok === false) {
+        console.error("Submit error:", { status: res.status, raw, data });
+        showToast({ title: "Failed to submit", message: "Please try again.", type: "error" });
+        return;
+      }
+
+      showToast({ title: "Thanks! Your details were sent", message: "We’ll get back to you shortly.", type: "success" });
+      resetForm();
+    } catch (err) {
+      console.error("Network/JS error:", err);
+      showToast({ title: "Failed", message: "To send details", type: "error" });
+    } finally {
+      setLoading(false);
+      submitting = false;
+    }
+  }
+
+  // Bind submit (tap on stylized submit area)
+  SUBMIT_EL.addEventListener('click', submitHandler);
+
+  // Also submit on Enter from any text/email/tel/url input
+  $$('input').forEach(inp => {
+    inp.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') submitHandler(e);
+    });
+  });
+})();
+
+// Cache promise so we only fetch IP once per page load
+let __ipPromise;
+function getPublicIP() {
+  if (!__ipPromise) {
+    __ipPromise = fetch('https://api.ipify.org?format=json')
+      .then(r => r.json())
+      .then(j => j.ip)
+      .catch(() => null);
+  }
+  return __ipPromise;
+}
+
+function detectDeviceLabel(ua = navigator.userAgent || '') {
+  ua = ua.toLowerCase();
+  if (/iphone|ipad|ipod/.test(ua)) return 'iPhone/iOS';
+  if (/android/.test(ua)) return 'Android';
+  if (/windows/.test(ua)) return 'Windows';
+  if (/macintosh|mac os x/.test(ua)) return 'Mac';
+  if (/linux/.test(ua)) return 'Linux';
+  return 'Unknown';
+}
+
+
+
+
+
+// desktop form sender
 (() => {
   // ====== CONFIG ======
   const ENDPOINT = "https://script.google.com/macros/s/AKfycbzyiQr-RoESKytc9AyLN0TbKZeEOBPYVw1WGjYR59mjYgghRk3ERqkzMHYY4hv8oMgl/exec"; // <-- change this
@@ -283,7 +490,10 @@ document.addEventListener('click', (e) => {
     service:      ($(".dd-input")?.value || "").trim(),
     budget:       ($(".budget-input")?.value || "").trim(),
     website:      getVal("Website"),
-    phone:        getVal("Phone")
+    phone:        getVal("Phone"),
+    _ip: ip || null,
+  _ua: ua,
+  _device: device
   });
 
   const setLoading = (on) => $(".button1")?.classList.toggle("loading", !!on);
