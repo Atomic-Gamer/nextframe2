@@ -995,43 +995,251 @@
       			<div style="position: absolute;  top: 98px;  left: 30px;  width: 331px;  height: 751px;  font-size: 16px;  color: #000;">
         				<div style="position: absolute;  height: 87.62%;  width: 65.56%;  top: 5.99%;  right: 16.92%;  bottom: 6.39%;  left: 17.52%;  filter: blur(106.5px);  background-color: rgba(217, 217, 217, 0.32);">
         				</div>
-        				<div style="position: absolute;  height: 100%;  width: 100%;  top: 0%;  right: 0%;  bottom: 0%;  left: 0%;  border-radius: 16px;  background-color: #090909;  border: 1px solid #f50000;  box-sizing: border-box;  overflow: hidden;">
-          					<div style="position: absolute;  top: 14px;  left: 15px;  box-shadow: -6px 7px 4px rgba(0, 0, 0, 0.25) inset;  border-radius: 8px;  background-color: #fff;  width: 301px;  height: 66px;  overflow: hidden;">
-            						<b style="position: absolute;  top: 21px;  left: 33px;">Name*</b>
-          					</div>
-          					<div style="position: absolute;  top: 97px;  left: 15px;  box-shadow: -6px 7px 4px rgba(0, 0, 0, 0.25) inset;  border-radius: 8px;  background-color: #fff;  width: 301px;  height: 66px;  overflow: hidden;">
-            						<b style="position: absolute;  top: 21px;  left: 33px;">Email*</b>
-          					</div>
-          					<div style="position: absolute;  top: 180px;  left: 15px;  box-shadow: -6px 7px 4px rgba(0, 0, 0, 0.25) inset;  border-radius: 8px;  background-color: #fff;  width: 301px;  height: 66px;  overflow: hidden;">
-            						<b style="position: absolute;  top: 21px;  left: 33px;">Phone</b>
-          					</div>
-          					<div style="position: absolute;  top: 263px;  left: 15px;  box-shadow: -6px 7px 4px rgba(0, 0, 0, 0.25) inset;  border-radius: 8px;  background-color: #fff;  width: 301px;  height: 66px;  overflow: hidden;">
-            						<b style="position: absolute;  top: 21px;  left: 33px;">Company</b>
-          					</div>
-          					<div style="position: absolute;  top: 346px;  left: 15px;  box-shadow: -6px 7px 4px rgba(0, 0, 0, 0.25) inset;  border-radius: 8px;  background-color: #fff;  width: 301px;  height: 66px;  overflow: hidden;">
-            						<b style="position: absolute;  top: 21px;  left: 33px;">Website</b>
-          					</div>
-          					<div style="position: absolute;  top: 429px;  left: 15px;  box-shadow: -6px 7px 4px rgba(0, 0, 0, 0.25) inset;  border-radius: 8px;  background-color: #fff;  width: 301px;  height: 66px;  overflow: hidden;">
-            						<b style="position: absolute;  top: 21px;  left: 33px;">How can we help?</b>
-            						<img style="position: absolute;  top: 22px;  left: 268px;  border-radius: 2px;  width: 21px;  height: 21px;  object-fit: contain;" alt="" src="imgs/Polygon 7.svg">
-            						
-          					</div>
-          					<div style="position: absolute;  top: 512px;  left: 15px;  box-shadow: -6px 7px 4px rgba(0, 0, 0, 0.25) inset;  border-radius: 8px;  background-color: #fff;  width: 301px;  height: 66px;  overflow: hidden;">
-            						<b style="position: absolute;  top: 21px;  left: 33px;">Budget</b>
-            						<img style="position: absolute;  top: 22px;  left: 268px;  border-radius: 2px;  width: 21px;  height: 21px;  object-fit: contain;" alt="" src="imgs/Polygon 7.svg">
-            						
-          					</div>
-          					<div style="position: absolute;  top: 595px;  left: 15px;  box-shadow: -6px 7px 4px rgba(0, 0, 0, 0.25) inset;  border-radius: 8px;  background-color: #fff;  width: 301px;  height: 66px;  overflow: hidden;">
-            						<b style="position: absolute;  top: 21px;  left: 33px;">Any thing else?</b>
-          					</div>
-          					<div style="position: absolute;  top: 678px;  left: 93px;  width: 144px;  height: 59px;  text-align: center;  color: #fff;">
-            						<div style="position: absolute;  height: 86.1%;  width: 92.29%;  top: 6.33%;  right: 4.12%;  bottom: 7.57%;  left: 3.59%;  backdrop-filter: blur(69px);  border-radius: 22px;  background-color: rgba(255, 255, 255, 0.01);">
-            						</div>
-            						<div style="position: absolute;  top: 5px;  left: 7px;  border-radius: 16px;  background: linear-gradient(84.26deg, rgba(0, 19, 114, 0.5), rgba(168, 0, 0, 0.5));  border: 1px solid #001372;  box-sizing: border-box;  width: 130px;  height: 49px;  overflow: hidden;">
-            						</div>
-            						<div style="position: absolute;  top: 17px;  left: 43px;  font-weight: 600;">Submit</div>
-          					</div>
-        				</div>
+        				<div id="mobile-contact-form" style="position:absolute;height:100%;width:100%;top:0;left:0;border-radius:16px;background-color:#090909;border:1px solid #f50000;box-sizing:border-box;overflow:hidden;">
+
+  <!-- Name -->
+  <div style="position:absolute;top:14px;left:15px;box-shadow:-6px 7px 4px rgba(0,0,0,0.25) inset;border-radius:8px;background-color:#fff;width:301px;height:66px;overflow:hidden;">
+    <input id="m-name" class="name" type="text" name="name" placeholder="Name*" required style="position:absolute;top:0;left:0;width:100%;height:50%;padding:22px 33px;border:none;outline:none;background:transparent;font-weight:bold;">
+  </div>
+
+  <!-- Email -->
+  <div style="position:absolute;top:97px;left:15px;box-shadow:-6px 7px 4px rgba(0,0,0,0.25) inset;border-radius:8px;background-color:#fff;width:301px;height:66px;overflow:hidden;">
+    <input id="m-email" class="name" type="email" name="email" placeholder="Email*" required pattern="^[^@\s]+@[^@\s]+\.[^@\s]+$" title="Please enter a valid email address" style="position:absolute;top:0;left:0;width:100%;height:50%;padding:22px 33px;border:none;outline:none;background:transparent;font-weight:bold;">
+  </div>
+
+  <!-- Phone -->
+  <div style="position:absolute;top:180px;left:15px;box-shadow:-6px 7px 4px rgba(0,0,0,0.25) inset;border-radius:8px;background-color:#fff;width:301px;height:66px;overflow:hidden;">
+    <input id="m-phone" class="name" type="tel" name="phone" placeholder="Phone" maxlength="10" inputmode="numeric" oninput="this.value=this.value.replace(/[^0-9]/g,'')" style="position:absolute;top:0;left:0;width:100%;height:50%;padding:22px 33px;border:none;outline:none;background:transparent;font-weight:bold;">
+  </div>
+
+  <!-- Company -->
+  <div style="position:absolute;top:263px;left:15px;box-shadow:-6px 7px 4px rgba(0,0,0,0.25) inset;border-radius:8px;background-color:#fff;width:301px;height:66px;overflow:hidden;">
+    <input id="m-company" class="name" type="text" placeholder="Company" style="position:absolute;top:0;left:0;width:100%;height:50%;padding:22px 33px;border:none;outline:none;background:transparent;font-weight:bold;">
+  </div>
+
+  <!-- Website -->
+  <div style="position:absolute;top:346px;left:15px;box-shadow:-6px 7px 4px rgba(0,0,0,0.25) inset;border-radius:8px;background-color:#fff;width:301px;height:66px;overflow:hidden;">
+    <input id="m-website" class="name" type="url" placeholder="Website" style="position:absolute;top:0;left:0;width:100%;height:50%;padding:22px 33px;border:none;outline:none;background:transparent;font-weight:bold;">
+  </div>
+
+  <!-- How can we help -->
+  <div class="how-can-we-help-parent field dd" style="position:absolute;top:429px;left:15px;box-shadow:-6px 7px 4px rgba(0,0,0,0.25) inset;border-radius:8px;background-color:#fff;width:301px;height:66px;overflow:hidden;">
+    <input id="m-help" class="name dd-input" type="text" placeholder="How can we help?" readonly style="position:absolute;top:0;left:0;width:100%;height:50%;padding:22px 33px;border:none;outline:none;background:transparent;font-weight:bold;">
+    <img class="polygon-icon dd-toggle" alt="" src="imgs/Polygon 7.svg" style="position:absolute;top:22px;left:268px;border-radius:2px;width:21px;height:21px;object-fit:contain;">
+    <ul class="help-dropdown dd-menu" hidden>
+      <li data-value="Website Design/ Development">Website Design/ Development</li>
+      <li data-value="App Design/ Development">App Design/ Development</li>
+      <li data-value="SEO">SEO</li>
+      <li data-value="Logo design">Logo design</li>
+      <li data-value="Graphics Design">Graphics Design</li>
+      <li data-value="Consulting">Consulting</li>
+    </ul>
+  </div>
+
+  <!-- Budget -->
+  <div class="your-budget-parent aa" style="position:absolute;top:512px;left:15px;box-shadow:-6px 7px 4px rgba(0,0,0,0.25) inset;border-radius:8px;background-color:#fff;width:301px;height:66px;overflow:hidden;">
+    <input id="m-budget" class="name budget-input" type="text" placeholder="Your budget" readonly style="position:absolute;top:0;left:0;width:100%;height:50%;padding:22px 33px;border:none;outline:none;background:transparent;font-weight:bold;">
+    <img class="frame-child11 budget-toggle" alt="" src="imgs/Polygon 7.svg" style="position:absolute;top:22px;left:268px;border-radius:2px;width:21px;height:21px;object-fit:contain;">
+    <ul class="budget-dropdown budget-menu" hidden>
+      <li data-value="Less than ₹15,000 / $170">Less than ₹15,000 / $170</li>
+      <li data-value="Under ₹30,000 / $340">Under ₹30,000 / $340</li>
+      <li data-value="Under ₹50,000 / $570">Under ₹50,000 / $570</li>
+      <li data-value="Under ₹1,00,000 / $1100">Under ₹1,00,000 / $1100</li>
+      <li data-value="More than ₹2,00,000 / $2300">More than ₹2,00,000 / $2300</li>
+    </ul>
+  </div>
+
+  <!-- Anything else -->
+  <div style="position:absolute;top:595px;left:15px;box-shadow:-6px 7px 4px rgba(0,0,0,0.25) inset;border-radius:8px;background-color:#fff;width:301px;height:66px;overflow:hidden;">
+    <input id="m-message" class="name" type="text" placeholder="Any thing else?" style="position:absolute;top:0;left:0;width:100%;height:50%;padding:22px 33px;border:none;outline:none;background:transparent;font-weight:bold;">
+  </div>
+
+  <!-- Submit -->
+  <div style="position:absolute;top:678px;left:93px;width:144px;height:59px;text-align:center;color:#fff;cursor:pointer;" id="m-submit">
+    <div style="position:absolute;height:86.1%;width:92.29%;top:6.33%;right:4.12%;bottom:7.57%;left:3.59%;backdrop-filter:blur(69px);border-radius:22px;background-color:rgba(255,255,255,0.01);"></div>
+    <div style="position:absolute;top:5px;left:7px;border-radius:16px;background:linear-gradient(84.26deg,rgba(0,19,114,0.5),rgba(168,0,0,0.5));border:1px solid #001372;box-sizing:border-box;width:130px;height:49px;overflow:hidden;"></div>
+    <div style="position:absolute;top:17px;left:43px;font-weight:600;">Submit</div>
+  </div>
+
+</div>
+
+
+<script>
+// ================= MOBILE FORM HANDLER =================
+(() => {
+  // ====== CONFIG ======
+  const ENDPOINT = "https://script.google.com/macros/s/AKfycbzyiQr-RoESKytc9AyLN0TbKZeEOBPYVw1WGjYR59mjYgghRk3ERqkzMHYY4hv8oMgl/exec"; // change if needed
+
+  // ====== ROOT ======
+  const ROOT = document.getElementById('mobile-contact-form');
+  const SUBMIT_EL = document.getElementById('m-submit');
+  if (!ROOT || !SUBMIT_EL) return;
+
+  // ====== HELPERS (scoped to ROOT) ======
+  const $  = (sel, r = ROOT) => r.querySelector(sel);
+  const $$ = (sel, r = ROOT) => Array.from(r.querySelectorAll(sel));
+  const val = (sel) => ($(sel)?.value || "").trim();
+
+  // Optional: simple toast fallback if you already have showToast, this won’t override it
+  window.showToast = window.showToast || function({ title = "", message = "", type = "info" } = {}) {
+    alert([title, message].filter(Boolean).join("\n"));
+  };
+
+  const setLoading = (on) => SUBMIT_EL.classList.toggle('loading', !!on);
+
+  const resetForm = () => {
+    $$('input').forEach(i => { if (!i.readOnly) i.value = ""; });
+    const dd = $('.dd-input'); if (dd) dd.value = "";
+    const bd = $('.budget-input'); if (bd) bd.value = "";
+    // close menus if open
+    closeMenu($('.dd-menu'));
+    closeMenu($('.budget-menu'));
+  };
+
+  const getPayload = () => ({
+    name:         val('#m-name'),
+    anythingElse: val('#m-message'),
+    email:        val('#m-email'),
+    company:      val('#m-company'),
+    service:      val('.dd-input'),
+    budget:       val('.budget-input'),
+    website:      val('#m-website'),
+    phone:        val('#m-phone'),
+    _source:      "mobile" // helpful for your sheet/logs
+  });
+
+  // ====== DROPDOWNS ======
+  const helpWrap   = $('.how-can-we-help-parent');
+  const helpToggle = helpWrap?.querySelector('.dd-toggle');
+  const helpInput  = helpWrap?.querySelector('.dd-input');
+  const helpMenu   = helpWrap?.querySelector('.dd-menu');
+
+  const budgetWrap   = $('.your-budget-parent');
+  const budgetToggle = budgetWrap?.querySelector('.budget-toggle');
+  const budgetInput  = budgetWrap?.querySelector('.budget-input');
+  const budgetMenu   = budgetWrap?.querySelector('.budget-menu');
+
+  const openMenu  = (ul) => { if (ul) ul.hidden = false; };
+  const closeMenu = (ul) => { if (ul) ul.hidden = true; };
+  const toggleMenu= (ul) => { if (ul) ul.hidden = !ul.hidden; };
+
+  // open/close on icon click
+  helpToggle?.addEventListener('click', (e) => { e.stopPropagation(); toggleMenu(helpMenu); });
+  budgetToggle?.addEventListener('click', (e) => { e.stopPropagation(); toggleMenu(budgetMenu); });
+
+  // also open when clicking input (readonly)
+  helpInput?.addEventListener('click', (e) => { e.stopPropagation(); toggleMenu(helpMenu); });
+  budgetInput?.addEventListener('click', (e) => { e.stopPropagation(); toggleMenu(budgetMenu); });
+
+  // select items
+  helpMenu?.querySelectorAll('li').forEach(li => {
+    li.addEventListener('click', () => { helpInput.value = li.dataset.value || li.textContent.trim(); closeMenu(helpMenu); });
+  });
+  budgetMenu?.querySelectorAll('li').forEach(li => {
+    li.addEventListener('click', () => { budgetInput.value = li.dataset.value || li.textContent.trim(); closeMenu(budgetMenu); });
+  });
+
+  // click outside to close
+  document.addEventListener('click', (e) => {
+    if (!helpWrap?.contains(e.target))  closeMenu(helpMenu);
+    if (!budgetWrap?.contains(e.target)) closeMenu(budgetMenu);
+  });
+
+  // escape to close
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeMenu(helpMenu);
+      closeMenu(budgetMenu);
+    }
+  });
+
+  // ====== VALIDATION ======
+  const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  const isValidPhone = (phone) => /^\d{10}$/.test(phone); // India 10-digit mobile
+
+  // Optional URL sanity (non-blocking): if present, must be a valid URL
+  const isValidUrl = (u) => {
+    if (!u) return true;
+    try { new URL(u.startsWith('http') ? u : 'https://' + u); return true; } catch { return false; }
+  };
+
+  // ====== SUBMIT ======
+  let submitting = false;
+
+  async function submitHandler(e) {
+    e?.preventDefault?.();
+
+    if (submitting) return;
+    submitting = true;
+    setLoading(true);
+
+    try {
+      const payload = getPayload();
+
+      if (!payload.name) {
+        showToast({ title: "Please enter your name.", type: "info" });
+        return;
+      }
+      if (!isValidEmail(payload.email)) {
+        showToast({ title: "Invalid email", message: "Please enter a valid email address.", type: "info" });
+        return;
+      }
+      if (!isValidPhone(payload.phone)) {
+        showToast({ title: "Invalid phone", message: "Please enter a valid 10-digit phone number.", type: "info" });
+        return;
+      }
+      if (!isValidUrl(payload.website)) {
+        showToast({ title: "Invalid website", message: "Add a valid URL or leave it blank.", type: "info" });
+        return;
+      }
+
+      const res = await fetch(ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "text/plain;charset=utf-8" }, // avoids CORS preflight
+        body: JSON.stringify(payload)
+      });
+
+      const raw = await res.text();
+      let data = {};
+      try { data = JSON.parse(raw); } catch {}
+
+      if (!res.ok || data.ok === false) {
+        console.error("Submit error:", { status: res.status, raw, data });
+        showToast({ title: "Failed to submit", message: "Please try again.", type: "error" });
+        return;
+      }
+
+      showToast({ title: "Thanks! Your details were sent", message: "We’ll get back to you shortly.", type: "success" });
+      resetForm();
+    } catch (err) {
+      console.error("Network/JS error:", err);
+      showToast({ title: "Failed", message: "To send details", type: "error" });
+    } finally {
+      setLoading(false);
+      submitting = false;
+    }
+  }
+
+  // Bind submit (tap on stylized submit area)
+  SUBMIT_EL.addEventListener('click', submitHandler);
+
+  // Also submit on Enter from any text/email/tel/url input
+  $$('input').forEach(inp => {
+    inp.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') submitHandler(e);
+    });
+  });
+})();
+
+
+
+</script>
+
+
+
+
+
+
       			</div>
       			<img style="position: absolute;  top: -16px;  left: 313px;  width: 96px;  height: 96px;" alt="" src="imgs/phone-message.svg">
       			

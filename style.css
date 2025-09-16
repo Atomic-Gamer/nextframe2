@@ -2337,7 +2337,11 @@ html, body { height: 100%; }
   .mobile-only {
     display: block;
   }
-    		
+  .toast-root{
+  top: 20px;
+  right: -450px;
+  
+}
     		
 }
 
