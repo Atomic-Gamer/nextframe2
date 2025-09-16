@@ -491,6 +491,115 @@
 </form>
 
 
+
+
+
+<script>
+  // Tiny toast creator
+  function showToast({ title = "Notice", message = "", type = "success", timeout = 3500 } = {}) {
+    const root = document.getElementById("toast-root");
+    if (!root) return;
+
+    const toast = document.createElement("div");
+    toast.className = `toast ${type}`;
+    toast.setAttribute("role","status");
+
+    const icon = {
+  success: `<img src="img/success.png" alt="success" class="toast__img">`,
+  error:   `<img src="img/error.png"   alt="error"   class="toast__img">`,
+  info:    `<img src="img/info.png"    alt="info"    class="toast__img">`
+}[type] || "🔔";
+
+		toast.innerHTML = `
+	<div class="toast__icon" aria-hidden="true">${icon}</div>
+	<div>
+		<p class="toast__title">${title}</p>
+		<p class="toast__msg">${message}</p>
+	</div>
+	<button class="toast__close" aria-label="Dismiss notification"></button>
+	`;
+
+    // Close handlers
+    const close = () => {
+      toast.classList.add("hide");
+      toast.addEventListener("animationend", () => toast.remove(), { once:true });
+    };
+    toast.querySelector(".toast__close").addEventListener("click", close);
+
+    // Auto-dismiss
+    if (timeout > 0) {
+      const t = setTimeout(close, timeout);
+      // Pause on hover
+      toast.addEventListener("mouseenter", () => clearTimeout(t));
+      toast.addEventListener("mouseleave", () => setTimeout(close, 1200));
+    }
+
+    root.appendChild(toast);
+  }
+
+  // === Form logic (replace alert with toast) ===
+  const form = document.getElementById("contact-form");
+
+  // OPTIONAL: helper to focus first invalid input nicely
+  function focusFirstInvalid(formEl){
+    const invalid = formEl.querySelector(":invalid");
+    if (invalid) invalid.focus({ preventScroll:false });
+  }
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    // Native HTML5 validation
+    if (!form.checkValidity()) {
+      focusFirstInvalid(form);
+      showToast({
+        title: "Please fix the form",
+        message: "Some fields are missing or invalid.",
+        type: "error",
+        timeout: 4500
+      });
+      return;
+    }
+
+    // If you POST to a backend, do that here.
+    // Example (uncomment & change URL):
+    // const formData = new FormData(form);
+    // try {
+    //   const res = await fetch("/api/contact", { method:"POST", body: formData });
+    //   if (!res.ok) throw new Error("Network error");
+    // } catch (err) {
+    //   showToast({ title:"Failed to send", message: err.message, type:"error" });
+    //   return;
+    // }
+
+    // Success toast
+    showToast({
+      title: "Thanks! Your details were sent",
+      message: "We’ll get back to you shortly.",
+      type: "success"
+    });
+
+    // Optionally reset the form
+    form.reset();
+  });
+
+  // TIP: If any old code still calls alert(...), remove or override it:
+  window.alert = (msg) => showToast({ title: "Notice", message: String(msg), type: "info" });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       			</div>
       			<div class="contact1">contact.</div>
       			<img class="phone-message-icon" alt="" src="img/phone-message1.svg">
@@ -1167,6 +1276,11 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 </script>
+
+
+<!-- Toasts -->
+<div id="toast-root" class="toast-root" aria-live="polite" aria-atomic="true"></div>
+
 
 </body>
 </html>

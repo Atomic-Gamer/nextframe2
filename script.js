@@ -305,20 +305,20 @@ document.addEventListener('click', (e) => {
       const payload = getPayload();
       // Validate name
 if (!payload.name) {
-  alert("Please enter your name.");
+  showToast({ title: "Please enter your name.", type: "info" });
   return;
 }
 
 // Validate email format
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 if (!emailPattern.test(payload.email)) {
-  alert("Please enter a valid email address (must include @ and domain).");
+  showToast({ title: "Invalid email", message: "Please enter a valid email address.", type: "info" });
   return;
 }
 
 // Validate phone (optional, 10 digits)
 if (!/^\d{10}$/.test(payload.phone)) {
-  alert("Please enter a valid 10-digit phone number.");
+  showToast({ title: "Invalid phone", message: "Please enter a valid 10-digit phone number.", type: "info" });
   return;
 }
       // text/plain → no preflight (OPTIONS)
@@ -334,15 +334,15 @@ if (!/^\d{10}$/.test(payload.phone)) {
 
       if (!res.ok || data.ok === false) {
         console.error("Submit error:", { status: res.status, raw, data });
-        alert("Failed to submit. Please try again.");
+        showToast({ title: "Failed to submit", message: "Please try again.", type: "error" });
         return;
       }
 
-      alert("Thanks! Your details were sent.");
+      showToast({ title: "Thanks! Your details were sent", message: "We’ll get back to you shortly.", type: "success" });
       resetForm();
     } catch (err) {
       console.error("Network/JS error:", err);
-      alert("Failed to submit. Please try again.");
+      showToast({ title: "Failed", message: "To send details", type: "error" });
     } finally {
       setLoading(false);
       submitting = false;

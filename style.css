@@ -2493,6 +2493,95 @@ body {
 
 
 
+/* === Toasts === */
+/* Toast container (bottom right) */
+.toast-root{
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 9999;
+}
 
+/* Toast box */
+.toast{
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: #e3e3e3;
+  color: #000;
+  border-radius: 12px;
+  padding: 14px 18px;
+  min-width: 340px;
+  max-width: 380px;
+  box-shadow: 0 4px 16px rgba(0,0,0,.15);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: toast-in .3s ease forwards;
+}
 
+.toast.hide{
+  animation: toast-out .2s ease forwards;
+}
+
+/* Black circle icon on left */
+.toast__icon{
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #000;
+  display: grid;
+  place-items: center;
+  color: #00ffaa; /* your green check color */
+  font-size: 20px;
+  flex-shrink: 0;
+  font-family: poppins;
+}
+.toast__img{
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  display: block;
+}
+
+/* Text */
+.toast__title{
+  margin: 0 0 2px;
+  font-weight: 600;
+  font-size: 15px;
+  font-family: poppins;
+}
+
+.toast__msg{
+  margin: 0;
+  font-size: 13px;
+  opacity: .8;
+  font-family: poppins;
+}
+
+/* Red dot close button */
+.toast__close{
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #e53935;
+  border: none;
+  cursor: pointer;
+  flex-shrink: 0;
+  position: absolute;
+  top: 6px;
+  right: 6px;
+}
+
+/* Animations */
+@keyframes toast-in{
+  from{opacity:0; transform:translateY(20px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+@keyframes toast-out{
+  to{opacity:0; transform:translateY(20px);}
+}
 
